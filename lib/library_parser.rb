@@ -1,4 +1,7 @@
+require 'pry'
+
 class LibraryParser
+  attr_accessor :file
   def files
     data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
     Dir.entries(data_path)[2..-1]
@@ -24,7 +27,7 @@ class LibraryParser
     files.each do |filename|
       parts = parse_filename(filename)
       build_objects(*parts)
-    end
+    end 
   end
 
   def build_objects(artist_name, song_name, genre_name)
@@ -37,4 +40,5 @@ class LibraryParser
     
     song.save
   end
+
 end
