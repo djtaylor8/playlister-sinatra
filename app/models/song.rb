@@ -4,11 +4,10 @@ class Song < ActiveRecord::Base
     has_many :genres, through: :song_genres
     
     def slug
-        self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+        name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
     end
 
     def self.find_by_slug(slug)
-        name = slug.gsub('-', ' ').titleize
-        Song.find_by(:name => name) 
+       Song.all.find {|song| song.slug == slug}
     end
 end
