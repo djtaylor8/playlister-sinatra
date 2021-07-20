@@ -1,2 +1,2 @@
-seeds = LibraryParser.new
-seeds.call 
+LibraryParser.parse  
+
